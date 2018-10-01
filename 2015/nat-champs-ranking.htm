@@ -1,0 +1,2614 @@
+
+
+
+<!doctype html>
+
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="sailwave results">
+<meta name="viewport" content="width=device-width">
+
+<title>Sailwave results for UKWA Cup Series 2015 at Series Results 2015</title>
+
+<style type="text/css">
+body {font: 80% arial, helvetica, sans-serif; text-align: center;}
+.hardleft  {text-align: left; float: left;  margin: 15px 0  15px 25px;}
+.hardright {text-align: right; float: right; margin: 15px 25px 15px 0;}
+table {text-align: left; margin: 0px auto 30px auto; font-size: 1em; border-collapse: collapse; border: 1px #999 solid;}
+td, th {padding: 4px; border: 1px #999 solid; vertical-align: top;}
+.caption {padding: 5px; text-align: center; border: 0; font-weight: bold;}
+h1 {font-size: 1.6em;}
+h2 {font-size: 1.4em;}
+h3 {font-size: 1.2em;}
+th {background-color: #ddd;}
+p {text-align: center;}
+.contents {text-align: left; margin-left: 20%;}
+.natflag {border: 1px #999 solid;}
+.nattext {font-size: 0.8em;}
+.place1 {font-weight: bold; background-color: #ffffaa;}
+.place2 {font-weight: bold; background-color: #aaaaff;}
+.place3 {font-weight: bold; background-color: #ffaaaa;}
+.placen {}
+</style>
+
+<script type="text/javascript">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+
+function swGetURLArgs() {
+
+  var url = location.href;
+  var qs  = url.substring(url.indexOf('?') + 1).split('&');
+
+  for(var i = 0, result = {}; i < qs.length; i++) {
+    qs[i]            = qs[i].split('=');
+    result[qs[i][0]] = decodeURIComponent(qs[i][1]);
+  }
+
+  return result;
+}
+
+//
+//  name=HighlightWins3
+//  dependencies=jQuery
+//  description=Highlight winning scores in summary tables.
+//  author=Jon Eskdale based on an idea by Colin Jenkins
+//  date=2015-08-18
+//  version=1.5
+//  url=http://sailwave.com
+//  email=jon@sailwave.com
+//  twitter=eskdale
+//  comments=Edit colours to colours of your choice
+//
+
+$(document).ready(function() {
+var winsSelector = '.summaryrace';
+var winsText     = /\b1\.0/g;
+var twoText              = /\b2\.0/g;
+var threeText    = /\b3\.0/g;
+
+// Edit these colours to change the highlight colours for 1st, 2nd and 3rd
+var winsColour   = '#ffd700';
+var twoColour    = '#6a91c5';
+var threeColour  = '#da6841';
+//var twoColour  = '#ffe768';
+//var threeColour  = '#fff0a1';
+
+// create array of race column numbers for first table (summarytable)
+var ths = document.getElementsByTagName('col');
+var column =[];
+for (var i=0; i<ths.length; i++) {
+        if (ths[i].classList[0] === "race") {
+                column.push(i);
+        } else {
+                if (column.length !=0) {
+                        break;
+                }
+        }
+}
+//console.log(column);
+
+//  Set a class of summaryrace for all race cells in summary table body
+//
+for (var i=0; i<column.length; i++) {
+        $(".summarytable tbody tr td:nth-child(" + (column[i]+1) +")").addClass("summaryrace");
+}
+
+// Change the background color for cells with class of summaryrace and that match regular expression text
+$(function () {
+
+  $(winsSelector).filter(function() {
+    return winsText.test($(this).text());
+  }).css("background", winsColour);
+  $(winsSelector).filter(function() {
+        return twoText.test($(this).text());
+  }).css("background", twoColour);
+  $(winsSelector).filter(function() {
+        return threeText.test($(this).text());
+  }).css("background", threeColour);
+
+});
+});
+//
+//  name=TableSorter
+//  dependencies=jQuery (autoloads if not specified)
+//  description=Click on heading to sort table
+//  author=Jon Eskdale
+//  date=2015-08-013
+//  version=1.1
+//  url=http://sailwave.com
+//  email=jon@sailwave.com
+//  twitter=@eskdale
+//
+
+</script>
+<link rel="stylesheet" href="http://sailwave.com/download/css/sorter.css">
+<script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.combined.js"></script>
+<script>
+
+$(document).ready(function()
+    {
+        // create array of race column numbers for first table (summarytable)
+        var ths = document.getElementsByTagName('col');
+        var column =[];
+        for (var i=0; i<ths.length; i++) {
+                if (ths[i].classList[0] === "race") {
+                        column.push(i);
+                } else {
+                        if (column.length !=0) {
+                                break;
+                        }
+                }
+        }
+        var patt = /\d+\.\d+/;
+        $.tablesorter.addParser({
+                id: 'race',
+                is: function(s, table, cell, $cell) {
+                        return false;
+                },
+                format: function(s, table, cell, cellIndex) {
+                        return patt.exec(s);
+                },
+                // set type, either numeric or text
+                type: 'numeric'
+        });
+
+        //  Set a class of race for all headers with race results in column for summarytable
+        //  "{sorter: 'numeric'}"
+        for (var i=0; i<column.length; i++) {
+                $(".summarytable thead tr th:nth-child(" + (column[i]+1) +")").addClass("sorter-race");
+        }
+
+
+        $(".summarytable").tablesorter({
+         theme : 'blue',
+         sortMultiSortKey: 'ctrlKey',
+         sortResetKey: 'altKey',
+         });
+}
+);
+
+
+</script>
+
+</head>
+
+<body>
+
+<header>
+</header>
+
+<div id="wrap">
+
+<img class="hardright" src="sailwave.gif" alt="event burgee" />
+<img class="hardleft"  src="sailwave.gif" alt="venue burgee" />
+
+<h1>UKWA Cup Series 2015</h1>
+<h2>Series Results</h2>
+
+<div style="clear:both;"></div>
+
+<style>
+div.applicant-break {page-break-after:always;}
+</style>
+<h3 class="seriestitle">Results as of  9:32 on October 12, 2015</h3>
+<h3 class="summarytitle" id="summarytechno">Techno Fleet</h3>
+<div class="caption summarycaption">Sailed: 6, Discards: 2, To count: 4, Entries: 67, Scoring system: Appendix A</div>
+<table class="summarytable" cellspacing="0" cellpadding="0" border="0">
+<colgroup span="16">
+<col class="exclude" />
+<col class="rank" />
+<col class="fleet" />
+<col class="division" />
+<col class="sailno" />
+<col class="helmname" />
+<col class="helmagegroup" />
+<col class="helmsex" />
+<col class="race" />
+<col class="race" />
+<col class="race" />
+<col class="race" />
+<col class="race" />
+<col class="race" />
+<col class="total" />
+<col class="nett" />
+</colgroup>
+<thead>
+<tr class="titlerow">
+<th>&nbsp;</th>
+<th>Rank</th>
+<th>Fleet</th>
+<th>Division</th>
+<th>SailNo</th>
+<th>Helm</th>
+<th>Age</th>
+<th>Sex</th>
+<th>Christchurch</th>
+<th>Bridlington</th>
+<th>Herne Bay</th>
+<th>Weymouth</th>
+<th>Pwhelli</th>
+<th>StokesBay</th>
+<th>Total</th>
+<th>Nett</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>1</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>393</td>
+<td>Joshua Carey</td>
+<td>2000</td>
+<td>M</td>
+<td>2.0</td>
+<td>4.0</td>
+<td>2.0</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>1.0</td>
+<td>145.0</td>
+<td>9.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>2</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>327</td>
+<td>Adam Phipps</td>
+<td>1999</td>
+<td>M</td>
+<td>4.0</td>
+<td>(68.0 DNC)</td>
+<td>(5.0)</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>83.0</td>
+<td>10.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>3</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>301</td>
+<td>Isaac Lines</td>
+<td>2000</td>
+<td>M</td>
+<td>3.0</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>(17.0)</td>
+<td>4.0</td>
+<td>(6.0)</td>
+<td>33.0</td>
+<td>10.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>4</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>3071</td>
+<td>Erin Watson</td>
+<td>1999</td>
+<td>F</td>
+<td>6.0</td>
+<td>5.0</td>
+<td>(7.0)</td>
+<td>3.0</td>
+<td>1.0</td>
+<td>(68.0 DNC)</td>
+<td>90.0</td>
+<td>15.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>5</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>360</td>
+<td>Andy Brown</td>
+<td>1999</td>
+<td>M</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>3.0</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>15.0</td>
+<td>156.0</td>
+<td>20.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>6</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>3116</td>
+<td>Finn Hawkins</td>
+<td>2002</td>
+<td>M</td>
+<td>(11.0)</td>
+<td>9.0</td>
+<td>(18.0)</td>
+<td>4.0</td>
+<td>6.0</td>
+<td>4.0</td>
+<td>52.0</td>
+<td>23.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>7</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>281</td>
+<td>Toby Cave</td>
+<td>1999</td>
+<td>M</td>
+<td>10.0</td>
+<td>3.0</td>
+<td>10.0</td>
+<td>2.0</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>161.0</td>
+<td>25.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>8</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>530</td>
+<td>Ben Tweedle</td>
+<td>2001</td>
+<td>M</td>
+<td>7.0</td>
+<td>(12.0)</td>
+<td>12.0</td>
+<td>(68.0 DNC)</td>
+<td>5.0</td>
+<td>2.0</td>
+<td>106.0</td>
+<td>26.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>9</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>3072</td>
+<td>Islay Watson</td>
+<td>2000</td>
+<td>F</td>
+<td>14.0</td>
+<td>10.0</td>
+<td>(23.0)</td>
+<td>5.0</td>
+<td>7.0</td>
+<td>(68.0 DNC)</td>
+<td>127.0</td>
+<td>36.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>10</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>341</td>
+<td>Molly Howell</td>
+<td>1999</td>
+<td>F</td>
+<td>(19.0)</td>
+<td>(14.0)</td>
+<td>14.0</td>
+<td>6.0</td>
+<td>9.0</td>
+<td>8.0</td>
+<td>70.0</td>
+<td>37.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>11</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>996</td>
+<td>Jeremy Whale</td>
+<td>2000</td>
+<td>M</td>
+<td>13.0</td>
+<td>15.0</td>
+<td>(24.0)</td>
+<td>7.0</td>
+<td>11.0</td>
+<td>(16.0)</td>
+<td>86.0</td>
+<td>46.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>12</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>979</td>
+<td>Rebecca Kent</td>
+<td>2000</td>
+<td>F</td>
+<td>(25.0)</td>
+<td>20.0</td>
+<td>(28.0)</td>
+<td>8.0</td>
+<td>12.0</td>
+<td>10.0</td>
+<td>103.0</td>
+<td>50.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>13</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>3114</td>
+<td>Josephine Spencer</td>
+<td>2000</td>
+<td>F</td>
+<td>21.0</td>
+<td>(23.0)</td>
+<td>(32.0)</td>
+<td>10.0</td>
+<td>8.0</td>
+<td>14.0</td>
+<td>108.0</td>
+<td>53.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>14</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>400</td>
+<td>Alysia Gibson</td>
+<td>2000</td>
+<td>F</td>
+<td>(31.0)</td>
+<td>22.0</td>
+<td>(35.0)</td>
+<td>9.0</td>
+<td>18.0</td>
+<td>5.0</td>
+<td>120.0</td>
+<td>54.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>15</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>3059</td>
+<td>Jude Nicol</td>
+<td>2001</td>
+<td>F</td>
+<td>15.0</td>
+<td>18.0</td>
+<td>(26.0)</td>
+<td>13.0</td>
+<td>14.0</td>
+<td>(20.0)</td>
+<td>106.0</td>
+<td>60.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>16</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>988</td>
+<td>Izzy Adcock</td>
+<td>2002</td>
+<td>F</td>
+<td>26.0</td>
+<td>(68.0 DNC)</td>
+<td>(27.0)</td>
+<td>14.0</td>
+<td>10.0</td>
+<td>11.0</td>
+<td>156.0</td>
+<td>61.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>17</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>847</td>
+<td>Jonathan Ashworth</td>
+<td>2000</td>
+<td>M</td>
+<td>(24.0)</td>
+<td>19.0</td>
+<td>(34.0)</td>
+<td>12.0</td>
+<td>13.0</td>
+<td>17.0</td>
+<td>119.0</td>
+<td>61.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>18</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>3030</td>
+<td>Mollie Densley-Robins</td>
+<td>2001</td>
+<td>F</td>
+<td>17.0</td>
+<td>13.0</td>
+<td>(25.0)</td>
+<td>16.0</td>
+<td>(68.0 DNC)</td>
+<td>18.0</td>
+<td>157.0</td>
+<td>64.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>19</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>413</td>
+<td>Scarlett Croft</td>
+<td>1999</td>
+<td>F</td>
+<td>12.0</td>
+<td>21.0</td>
+<td>31.0</td>
+<td>11.0</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>211.0</td>
+<td>75.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>20</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>152</td>
+<td>Maya Wylie</td>
+<td>2002</td>
+<td>F</td>
+<td>20.0</td>
+<td>(27.0)</td>
+<td>(68.0 DNC)</td>
+<td>21.0</td>
+<td>15.0</td>
+<td>21.0</td>
+<td>172.0</td>
+<td>77.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>21</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>340</td>
+<td>Hugo Thomas</td>
+<td>2000</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>8.0</td>
+<td>9.0</td>
+<td>(68.0 DNC)</td>
+<td>3.0</td>
+<td>68.0 DNC</td>
+<td>224.0</td>
+<td>88.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>22</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>991</td>
+<td>Zoe Bassett</td>
+<td>2002</td>
+<td>F</td>
+<td>28.0</td>
+<td>(68.0 DNC)</td>
+<td>(40.0)</td>
+<td>22.0</td>
+<td>22.0</td>
+<td>22.0</td>
+<td>202.0</td>
+<td>94.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>23</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>1012</td>
+<td>Kate Hatcher</td>
+<td>2001</td>
+<td>F</td>
+<td>27.0</td>
+<td>(68.0 DNC)</td>
+<td>36.0</td>
+<td>19.0</td>
+<td>25.0</td>
+<td>(68.0 DNC)</td>
+<td>243.0</td>
+<td>107.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>24</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>3141</td>
+<td>Aaron Hobb</td>
+<td>1999</td>
+<td>M</td>
+<td>18.0</td>
+<td>11.0</td>
+<td>13.0</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>246.0</td>
+<td>110.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>25</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>333</td>
+<td>Tom Cunningham</td>
+<td>2001</td>
+<td>M</td>
+<td>23.0</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>15.0</td>
+<td>68.0 DNC</td>
+<td>19.0</td>
+<td>261.0</td>
+<td>125.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>26</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>3172</td>
+<td>Ethan Moody</td>
+<td>2002</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>29.0</td>
+<td>68.0 DNC</td>
+<td>20.0</td>
+<td>9.0</td>
+<td>262.0</td>
+<td>126.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>27</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>9926</td>
+<td>James Bulson</td>
+<td>2002</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>30.0</td>
+<td>20.0</td>
+<td>68.0 DNC</td>
+<td>13.0</td>
+<td>267.0</td>
+<td>131.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>28</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>141</td>
+<td>Ben McCann</td>
+<td>1999</td>
+<td>M</td>
+<td>5.0</td>
+<td>7.0</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>284.0</td>
+<td>148.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>29</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>443</td>
+<td>Isabel Lawrence</td>
+<td>2000</td>
+<td>F</td>
+<td>22.0</td>
+<td>(68.0 DNC)</td>
+<td>45.0</td>
+<td>(68.0 DNC)</td>
+<td>21.0</td>
+<td>68.0 DNC</td>
+<td>292.0</td>
+<td>156.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>30</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>3203</td>
+<td>Ellie Gibson</td>
+<td>2001</td>
+<td>F</td>
+<td>30.0</td>
+<td>26.0</td>
+<td>37.0</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>297.0</td>
+<td>161.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>31</td>
+<td>Techno</td>
+<td>TOpen</td>
+<td>585</td>
+<td>Lucy Grayston</td>
+<td>1998</td>
+<td>F</td>
+<td>(68.0 DNC)</td>
+<td>6.0</td>
+<td>21.0</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>299.0</td>
+<td>163.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>32</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>974</td>
+<td>Galahad Wisbey</td>
+<td>1999</td>
+<td>M</td>
+<td>8.0</td>
+<td>(68.0 DNC)</td>
+<td>20.0</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>300.0</td>
+<td>164.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>33</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>866</td>
+<td>Elise Chandler</td>
+<td>2000</td>
+<td>F</td>
+<td>29.0</td>
+<td>(68.0 DNC)</td>
+<td>42.0</td>
+<td>25.0</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>300.0</td>
+<td>164.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>34</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>146</td>
+<td>Daniel Beedham</td>
+<td>1999</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>16.0</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>19.0</td>
+<td>68.0 DNC</td>
+<td>307.0</td>
+<td>171.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>35</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>316</td>
+<td>Lowena Penny</td>
+<td>1999</td>
+<td>F</td>
+<td>(68.0 DNC)</td>
+<td>24.0</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>23.0</td>
+<td>319.0</td>
+<td>183.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>36</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>848</td>
+<td>Cameron Green</td>
+<td>2000</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>28.0</td>
+<td>33.0</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>333.0</td>
+<td>197.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>37</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>189</td>
+<td>Tom Skoulding</td>
+<td>2002</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>41.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>24.0</td>
+<td>337.0</td>
+<td>201.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>38</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>359</td>
+<td>Josh Lane</td>
+<td>2001</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>43.0</td>
+<td>23.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>338.0</td>
+<td>202.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>39</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>3065</td>
+<td>Sam Brown</td>
+<td>2002</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>30.0</td>
+<td>38.0</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>340.0</td>
+<td>204.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>40</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>402</td>
+<td>Ian Verluis</td>
+<td>U17</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>4.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>344.0</td>
+<td>208.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>41</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>39</td>
+<td>Thomas Broucke</td>
+<td>U17</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>6.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>346.0</td>
+<td>210.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>42</td>
+<td>Techno</td>
+<td>T+</td>
+<td>585</td>
+<td>Lucy Grayston</td>
+<td>1998</td>
+<td>F</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>7.0</td>
+<td>347.0</td>
+<td>211.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>43</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>148</td>
+<td>Joost Vink</td>
+<td>U15</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>8.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>348.0</td>
+<td>212.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>44</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>224</td>
+<td>Marina Round</td>
+<td>2000</td>
+<td>F</td>
+<td>9.0</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>349.0</td>
+<td>213.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>45</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>115</td>
+<td>Luc Schmitz</td>
+<td>U15</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>11.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>351.0</td>
+<td>215.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>46</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>3157</td>
+<td>Julian Tait</td>
+<td>1999</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>12.0</td>
+<td>352.0</td>
+<td>216.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>47</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>9999</td>
+<td>Floris Franken</td>
+<td>2001</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>15.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>355.0</td>
+<td>219.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>48</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>339</td>
+<td>Patrick Boyce</td>
+<td>1999</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>16.0</td>
+<td>68.0 DNC</td>
+<td>356.0</td>
+<td>220.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>49</td>
+<td>Techno</td>
+<td>T+</td>
+<td>98</td>
+<td>Jan Stockmans</td>
+<td>U17</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>16.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>356.0</td>
+<td>220.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>50</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>328</td>
+<td>Joe Parrott</td>
+<td>1999</td>
+<td>M</td>
+<td>16.0</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>356.0</td>
+<td>220.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>51</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>3145</td>
+<td>Ross Lachlan</td>
+<td>2002</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>17.0</td>
+<td>68.0 DNC</td>
+<td>357.0</td>
+<td>221.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>52</td>
+<td>Techno</td>
+<td>TOpen</td>
+<td>934</td>
+<td>Rachel Horton</td>
+<td>U20</td>
+<td>F</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>17.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>357.0</td>
+<td>221.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>53</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>806</td>
+<td>Thomas Anderson</td>
+<td>1999</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>17.0</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>357.0</td>
+<td>221.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>54</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>848</td>
+<td>Luca Dominguez</td>
+<td>1999</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>18.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>358.0</td>
+<td>222.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>55</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>50</td>
+<td>Lore Dildick</td>
+<td>2000</td>
+<td>F</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>19.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>359.0</td>
+<td>223.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>56</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>106</td>
+<td>Robin Goddyn</td>
+<td>U17</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>22.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>362.0</td>
+<td>226.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>57</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>3107</td>
+<td>Lucy Howell</td>
+<td>2002</td>
+<td>F</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>23.0</td>
+<td>68.0 DNC</td>
+<td>363.0</td>
+<td>227.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>58</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>378</td>
+<td>Charlotte Morrison</td>
+<td>?</td>
+<td>F</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>24.0</td>
+<td>68.0 DNC</td>
+<td>364.0</td>
+<td>228.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>59</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>3209</td>
+<td>Zoe Davis</td>
+<td>2001</td>
+<td>F</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>24.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>364.0</td>
+<td>228.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>60</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>867</td>
+<td>Harry Sharrock</td>
+<td>????</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>25.0</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>365.0</td>
+<td>229.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>61</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>555</td>
+<td>Ella Dominguez</td>
+<td>2002</td>
+<td>F</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>26.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>366.0</td>
+<td>230.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>62</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>361</td>
+<td>Philip Heywood</td>
+<td>?</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>29.0</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>369.0</td>
+<td>233.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>63</td>
+<td>Techno</td>
+<td>O5.8</td>
+<td>378</td>
+<td>Charlotte Morrison</td>
+<td>?</td>
+<td>F</td>
+<td>(68.0 DNC)</td>
+<td>31.5</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>371.5</td>
+<td>235.5</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>63</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>488</td>
+<td>Joe Wibley</td>
+<td>?</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>31.5</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>371.5</td>
+<td>235.5</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>65</td>
+<td>Techno</td>
+<td>T7.8</td>
+<td>571</td>
+<td>Emma Ashman</td>
+<td>2000</td>
+<td>F</td>
+<td>32.0</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>372.0</td>
+<td>236.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>66</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>362</td>
+<td>Jack Stannard</td>
+<td>?</td>
+<td>M</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>39.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>379.0</td>
+<td>243.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>67</td>
+<td>Techno</td>
+<td>T6.8</td>
+<td>937</td>
+<td>Zara Horton</td>
+<td>2002</td>
+<td>F</td>
+<td>(68.0 DNC)</td>
+<td>(68.0 DNC)</td>
+<td>44.0</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>68.0 DNC</td>
+<td>384.0</td>
+<td>248.0</td>
+</tr>
+</tbody>
+</table>
+<div class="applicant-break"></div>
+<h3 class="summarytitle" id="summaryrsx">RSX Fleet</h3>
+<div class="caption summarycaption">Sailed: 6, Discards: 2, To count: 4, Entries: 34, Scoring system: Appendix A</div>
+<table class="summarytable" cellspacing="0" cellpadding="0" border="0">
+<colgroup span="16">
+<col class="exclude" />
+<col class="rank" />
+<col class="fleet" />
+<col class="division" />
+<col class="sailno" />
+<col class="helmname" />
+<col class="helmagegroup" />
+<col class="helmsex" />
+<col class="race" />
+<col class="race" />
+<col class="race" />
+<col class="race" />
+<col class="race" />
+<col class="race" />
+<col class="total" />
+<col class="nett" />
+</colgroup>
+<thead>
+<tr class="titlerow">
+<th>&nbsp;</th>
+<th>Rank</th>
+<th>Fleet</th>
+<th>Division</th>
+<th>SailNo</th>
+<th>Helm</th>
+<th>Age</th>
+<th>Sex</th>
+<th>Christchurch</th>
+<th>Bridlington</th>
+<th>Herne Bay</th>
+<th>Weymouth</th>
+<th>Pwhelli</th>
+<th>StokesBay</th>
+<th>Total</th>
+<th>Nett</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>1</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>481</td>
+<td>Chay Tudberry</td>
+<td>U20</td>
+<td>M</td>
+<td>9.0</td>
+<td>(35.0 DNC)</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>6.0</td>
+<td>(15.0)</td>
+<td>72.0</td>
+<td>22.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>2</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>383</td>
+<td>Matt Carey</td>
+<td>U20</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>14.0</td>
+<td>123.0</td>
+<td>53.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>3</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>201</td>
+<td>Joe Parrott</td>
+<td>U20</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>16.0</td>
+<td>124.0</td>
+<td>54.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>4</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>141</td>
+<td>Ben McCann</td>
+<td>U20</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>2.0</td>
+<td>5.0</td>
+<td>18.0</td>
+<td>130.0</td>
+<td>60.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>5</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>259</td>
+<td>Thomas Sambrook</td>
+<td>U20</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>1.0</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>3.0</td>
+<td>35.0 DNC</td>
+<td>144.0</td>
+<td>74.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>6</td>
+<td>RSX</td>
+<td>RSX O</td>
+<td>983</td>
+<td>Matthew Barton</td>
+<td>-</td>
+<td>&nbsp;</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>1.0</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>4.0</td>
+<td>145.0</td>
+<td>75.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>7</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>961</td>
+<td>Emma Wilson</td>
+<td>U20</td>
+<td>F</td>
+<td>2.0</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>11.0</td>
+<td>153.0</td>
+<td>83.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>8</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>585</td>
+<td>Lucy Grayston</td>
+<td>U20</td>
+<td>F</td>
+<td>10.0</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>7.0</td>
+<td>35.0 DNC</td>
+<td>157.0</td>
+<td>87.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>9</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>281</td>
+<td>Toby Cave</td>
+<td>1999</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>4.0</td>
+<td>19.0</td>
+<td>163.0</td>
+<td>93.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>10</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>358</td>
+<td>Lily Young</td>
+<td>U20</td>
+<td>F</td>
+<td>12.0</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>20.0</td>
+<td>172.0</td>
+<td>102.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>11</td>
+<td>RSX</td>
+<td>RSX O</td>
+<td>926</td>
+<td>Kieran Martin</td>
+<td>1995</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>1.0</td>
+<td>176.0</td>
+<td>106.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>12</td>
+<td>RSX</td>
+<td>RSX O</td>
+<td>889</td>
+<td>Natalie Mc Williams</td>
+<td>-</td>
+<td>F</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>1.0</td>
+<td>35.0 DNC</td>
+<td>176.0</td>
+<td>106.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>13</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>852</td>
+<td>Henry Bloodworth</td>
+<td>U20</td>
+<td>M</td>
+<td>1.0</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>176.0</td>
+<td>106.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>14</td>
+<td>RSX</td>
+<td>RSX O</td>
+<td>931</td>
+<td>Tom Squires</td>
+<td>-</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>2.0</td>
+<td>177.0</td>
+<td>107.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>15</td>
+<td>RSX</td>
+<td>RSX O</td>
+<td>749</td>
+<td>Robert York</td>
+<td>1996</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>3.0</td>
+<td>178.0</td>
+<td>108.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>16</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>81</td>
+<td>Jack Bassett</td>
+<td>U20</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>3.0</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>178.0</td>
+<td>108.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>17</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>102</td>
+<td>James Hatcher</td>
+<td>U20</td>
+<td>M</td>
+<td>3.0</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>178.0</td>
+<td>108.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>18</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>821</td>
+<td>Ruben Lansley</td>
+<td>U20</td>
+<td>M</td>
+<td>4.0</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>179.0</td>
+<td>109.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>19</td>
+<td>RSX</td>
+<td>RSX O</td>
+<td>17</td>
+<td>James Hatcher</td>
+<td>1998</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>5.0</td>
+<td>180.0</td>
+<td>110.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>20</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>466</td>
+<td>Cameron Coghill</td>
+<td>U20</td>
+<td>M</td>
+<td>5.0</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>180.0</td>
+<td>110.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>21</td>
+<td>RSX</td>
+<td>RSX O</td>
+<td>94</td>
+<td>Bryony Shaw</td>
+<td>-</td>
+<td>F</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>6.0</td>
+<td>181.0</td>
+<td>111.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>22</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>962</td>
+<td>Daniel Wilson</td>
+<td>U20</td>
+<td>M</td>
+<td>6.0</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>181.0</td>
+<td>111.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>23</td>
+<td>RSX</td>
+<td>RSX O</td>
+<td>30</td>
+<td>Izzy Hamilton</td>
+<td>1992</td>
+<td>F</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>7.0</td>
+<td>182.0</td>
+<td>112.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>24</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>759</td>
+<td>Dean Hargreaves</td>
+<td>U20</td>
+<td>M</td>
+<td>7.0</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>182.0</td>
+<td>112.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>25</td>
+<td>RSX</td>
+<td>RSX O</td>
+<td>852</td>
+<td>Henry Bloodworth</td>
+<td>1998</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>8.0</td>
+<td>183.0</td>
+<td>113.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>26</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>74</td>
+<td>Galahad Wisbey</td>
+<td>U20</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>8.0</td>
+<td>35.0 DNC</td>
+<td>183.0</td>
+<td>113.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>27</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>714</td>
+<td>Emily Hall</td>
+<td>U20</td>
+<td>F</td>
+<td>8.0</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>183.0</td>
+<td>113.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>28</td>
+<td>RSX</td>
+<td>RSX O</td>
+<td>93</td>
+<td>Cameron Coghill</td>
+<td>1997</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>9.0</td>
+<td>184.0</td>
+<td>114.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>29</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>935</td>
+<td>Toby Williams</td>
+<td>U20</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>9.0</td>
+<td>35.0 DNC</td>
+<td>184.0</td>
+<td>114.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>30</td>
+<td>RSX</td>
+<td>RSX O</td>
+<td>561</td>
+<td>Imogen Sills</td>
+<td>1996</td>
+<td>F</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>10.0</td>
+<td>185.0</td>
+<td>115.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>31</td>
+<td>RSX</td>
+<td>RSX Y</td>
+<td>894</td>
+<td>Mia Adcock</td>
+<td>1999</td>
+<td>F</td>
+<td>11.0</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>186.0</td>
+<td>116.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>32</td>
+<td>RSX</td>
+<td>RSX O</td>
+<td>956</td>
+<td>Saskia Sills</td>
+<td>1996</td>
+<td>F</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>12.0</td>
+<td>187.0</td>
+<td>117.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>33</td>
+<td>RSX</td>
+<td>RSX O</td>
+<td>178</td>
+<td>Brian Wilson</td>
+<td>M</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>13.0</td>
+<td>188.0</td>
+<td>118.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>34</td>
+<td>RSX</td>
+<td>RSX O</td>
+<td>49</td>
+<td>Joe Bennett</td>
+<td>1995</td>
+<td>M</td>
+<td>(35.0 DNC)</td>
+<td>(35.0 DNC)</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>35.0 DNC</td>
+<td>17.0</td>
+<td>192.0</td>
+<td>122.0</td>
+</tr>
+</tbody>
+</table>
+<div class="applicant-break"></div>
+<h3 class="summarytitle" id="summaryraceboard">Raceboard Fleet</h3>
+<div class="caption summarycaption">Sailed: 6, Discards: 2, To count: 4, Entries: 25, Scoring system: Appendix A</div>
+<table class="summarytable" cellspacing="0" cellpadding="0" border="0">
+<colgroup span="16">
+<col class="exclude" />
+<col class="rank" />
+<col class="fleet" />
+<col class="division" />
+<col class="sailno" />
+<col class="helmname" />
+<col class="helmagegroup" />
+<col class="helmsex" />
+<col class="race" />
+<col class="race" />
+<col class="race" />
+<col class="race" />
+<col class="race" />
+<col class="race" />
+<col class="total" />
+<col class="nett" />
+</colgroup>
+<thead>
+<tr class="titlerow">
+<th>&nbsp;</th>
+<th>Rank</th>
+<th>Fleet</th>
+<th>Division</th>
+<th>SailNo</th>
+<th>Helm</th>
+<th>Age</th>
+<th>Sex</th>
+<th>Christchurch</th>
+<th>Bridlington</th>
+<th>Herne Bay</th>
+<th>Weymouth</th>
+<th>Pwhelli</th>
+<th>StokesBay</th>
+<th>Total</th>
+<th>Nett</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>1</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>730</td>
+<td>Louis Morris</td>
+<td>-</td>
+<td>LW</td>
+<td>2.0</td>
+<td>(26.0 DNC)</td>
+<td>(26.0 DNC)</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>57.0</td>
+<td>5.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>2</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>365</td>
+<td>Mark Kay</td>
+<td>M</td>
+<td>HW</td>
+<td>1.0</td>
+<td>(2.0)</td>
+<td>1.0</td>
+<td>(2.0)</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>10.0</td>
+<td>6.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>3</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>919</td>
+<td>Robert Kent</td>
+<td>M</td>
+<td>LW</td>
+<td>(4.0)</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>(4.0)</td>
+<td>4.0</td>
+<td>18.0</td>
+<td>10.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>4</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>552</td>
+<td>Tom Naylor</td>
+<td>V</td>
+<td>LW</td>
+<td>(3.0)</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>(26.0 DNC)</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>41.0</td>
+<td>12.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>5</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>895</td>
+<td>Lewis Barnes</td>
+<td>-</td>
+<td>HW</td>
+<td>(11.0)</td>
+<td>(26.0 DNC)</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>5.0</td>
+<td>5.0</td>
+<td>55.0</td>
+<td>18.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>6</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>882</td>
+<td>John Pete</td>
+<td>SV</td>
+<td>HW</td>
+<td>8.0</td>
+<td>4.0</td>
+<td>(9.0)</td>
+<td>5.0</td>
+<td>(9.0)</td>
+<td>6.0</td>
+<td>41.0</td>
+<td>23.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>7</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>918</td>
+<td>Annette Kent</td>
+<td>M</td>
+<td>F</td>
+<td>7.0</td>
+<td>6.0</td>
+<td>5.0</td>
+<td>(8.0)</td>
+<td>(8.0)</td>
+<td>7.0</td>
+<td>41.0</td>
+<td>25.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>8</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>607</td>
+<td>Harriet Ellis</td>
+<td>-</td>
+<td>F</td>
+<td>6.0</td>
+<td>5.0</td>
+<td>(8.0)</td>
+<td>7.0</td>
+<td>(10.0)</td>
+<td>8.0</td>
+<td>44.0</td>
+<td>26.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>9</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>289</td>
+<td>Thomas Cave</td>
+<td>U20</td>
+<td>LW</td>
+<td>9.0</td>
+<td>8.0</td>
+<td>(11.0)</td>
+<td>11.0</td>
+<td>11.0</td>
+<td>(12.0)</td>
+<td>62.0</td>
+<td>39.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>10</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>600</td>
+<td>Chris Gibson</td>
+<td>V</td>
+<td>HW</td>
+<td>(13.0)</td>
+<td>10.0</td>
+<td>12.0</td>
+<td>9.0</td>
+<td>(15.0)</td>
+<td>9.0</td>
+<td>68.0</td>
+<td>40.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>11</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>10000</td>
+<td>Andy Gibson</td>
+<td>M</td>
+<td>HW</td>
+<td>5.0</td>
+<td>(26.0 DNC)</td>
+<td>7.0</td>
+<td>(26.0 DNC)</td>
+<td>7.0</td>
+<td>26.0 DNC</td>
+<td>97.0</td>
+<td>45.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>12</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>9688</td>
+<td>Alice Butts</td>
+<td>U20</td>
+<td>F</td>
+<td>(14.0)</td>
+<td>9.0</td>
+<td>(13.0)</td>
+<td>13.0</td>
+<td>12.0</td>
+<td>11.0</td>
+<td>72.0</td>
+<td>45.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>13</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>978</td>
+<td>Emily Kent</td>
+<td>U20</td>
+<td>F</td>
+<td>10.0</td>
+<td>(26.0 DNC)</td>
+<td>(14.0)</td>
+<td>14.0</td>
+<td>13.0</td>
+<td>13.0</td>
+<td>90.0</td>
+<td>50.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>14</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>7282</td>
+<td>Brian Tilbury</td>
+<td>SV</td>
+<td>LW</td>
+<td>(26.0 DNC)</td>
+<td>11.0</td>
+<td>15.0</td>
+<td>(16.0)</td>
+<td>14.0</td>
+<td>14.0</td>
+<td>96.0</td>
+<td>54.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>15</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>296</td>
+<td>Tom Dryden</td>
+<td>V</td>
+<td>HW</td>
+<td>(26.0 DNC)</td>
+<td>7.0</td>
+<td>(26.0 DNC)</td>
+<td>26.0 DNC</td>
+<td>6.0</td>
+<td>26.0 DNC</td>
+<td>117.0</td>
+<td>65.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>16</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>9997</td>
+<td>Jenna Gibson</td>
+<td>U20</td>
+<td>F</td>
+<td>(26.0 DNC)</td>
+<td>(26.0 DNC)</td>
+<td>6.0</td>
+<td>26.0 DNC</td>
+<td>26.0 DNC</td>
+<td>10.0</td>
+<td>120.0</td>
+<td>68.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>17</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>407</td>
+<td>Robin McAllister</td>
+<td>-</td>
+<td>LW</td>
+<td>(26.0 DNC)</td>
+<td>(26.0 DNC)</td>
+<td>26.0 DNC</td>
+<td>6.0</td>
+<td>26.0 DNC</td>
+<td>26.0 DNC</td>
+<td>136.0</td>
+<td>84.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>18</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>343</td>
+<td>Andrew Robinson</td>
+<td>-</td>
+<td>LW</td>
+<td>(26.0 DNC)</td>
+<td>(26.0 DNC)</td>
+<td>26.0 DNC</td>
+<td>10.0</td>
+<td>26.0 DNC</td>
+<td>26.0 DNC</td>
+<td>140.0</td>
+<td>88.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>19</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>10</td>
+<td>Patric Roelandts</td>
+<td>SV</td>
+<td>LW</td>
+<td>(26.0 DNC)</td>
+<td>(26.0 DNC)</td>
+<td>10.0</td>
+<td>26.0 DNC</td>
+<td>26.0 DNC</td>
+<td>26.0 DNC</td>
+<td>140.0</td>
+<td>88.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>20</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>537</td>
+<td>Rod Davis</td>
+<td>SV</td>
+<td>LW</td>
+<td>(26.0 DNC)</td>
+<td>(26.0 DNC)</td>
+<td>26.0 DNC</td>
+<td>12.0</td>
+<td>26.0 DNC</td>
+<td>26.0 DNC</td>
+<td>142.0</td>
+<td>90.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>21</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>401</td>
+<td>Kevin Clark</td>
+<td>V</td>
+<td>HW</td>
+<td>12.0</td>
+<td>(26.0 DNC)</td>
+<td>(26.0 DNC)</td>
+<td>26.0 DNC</td>
+<td>26.0 DNC</td>
+<td>26.0 DNC</td>
+<td>142.0</td>
+<td>90.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>22</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>862</td>
+<td>Paul Blackburn</td>
+<td>V</td>
+<td>LW</td>
+<td>(26.0 DNC)</td>
+<td>(26.0 DNC)</td>
+<td>26.0 DNC</td>
+<td>26.0 DNC</td>
+<td>26.0 DNC</td>
+<td>15.0</td>
+<td>145.0</td>
+<td>93.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>23</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>353</td>
+<td>Paul Robinson</td>
+<td>V</td>
+<td>HW</td>
+<td>(26.0 DNC)</td>
+<td>(26.0 DNC)</td>
+<td>26.0 DNC</td>
+<td>15.0</td>
+<td>26.0 DNC</td>
+<td>26.0 DNC</td>
+<td>145.0</td>
+<td>93.0</td>
+</tr>
+<tr class="even summaryrow">
+<td>&nbsp;</td>
+<td>24</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>33</td>
+<td>Peter Murrey</td>
+<td>-</td>
+<td>LW</td>
+<td>(26.0 DNC)</td>
+<td>(26.0 DNC)</td>
+<td>16.0</td>
+<td>26.0 DNC</td>
+<td>26.0 DNC</td>
+<td>26.0 DNC</td>
+<td>146.0</td>
+<td>94.0</td>
+</tr>
+<tr class="odd summaryrow">
+<td>&nbsp;</td>
+<td>25</td>
+<td>Raceboard</td>
+<td>RB 9.5</td>
+<td>539</td>
+<td>Ian Wild</td>
+<td>SV</td>
+<td>LW</td>
+<td>(26.0 DNC)</td>
+<td>(26.0 DNC)</td>
+<td>17.0</td>
+<td>26.0 DNC</td>
+<td>26.0 DNC</td>
+<td>26.0 DNC</td>
+<td>147.0</td>
+<td>95.0</td>
+</tr>
+</tbody>
+</table>
+
+<p class="hardleft"><a href="http://www.ukwindsurfing.com">www.ukwindsurfing.com</a><br /><a href="mailto:"></a></p>
+<p class="hardright"><a href="http://www.windsurfingresults.co.uk">www.windsurfingresults.co.uk</a><br /><a href="mailto:"></a></p>
+<p>Sailwave Scoring Software 2.19.9<br /><a href="http://www.sailwave.com">www.sailwave.com</a></p>
+
+</div>
+
+<footer>
+</footer>
+
+<div id="scrollbottom"></div>
+
+</body>
+</html>
+
+
